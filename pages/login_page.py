@@ -9,13 +9,11 @@ from base.base_class import Base
 
 
 class Login_page(Base):
-
     url = 'https://www.saucedemo.com/'
 
     def __init__(self, driver):
         super().__init__(driver)
         self.driver = driver
-
 
     # Locators
     user_name = "//input[@id = 'user-name']"
@@ -41,10 +39,6 @@ class Login_page(Base):
         return WebDriverWait(self.driver, 30).until(
             EC.element_to_be_clickable((By.XPATH, self.main_word)))
 
-
-
-
-
     # Actions
     def input_user_name(self, user_name):
         self.get_user_name().send_keys(user_name)
@@ -58,9 +52,6 @@ class Login_page(Base):
         self.get_login_button().click()
         print("Click login Button")
 
-
-
-
     # Methods
     def authorization(self):
         self.driver.get(self.url)
@@ -70,4 +61,3 @@ class Login_page(Base):
         self.input_password("secret_sauce")
         self.click_login_button()
         self.assert_word(self.get_main_word(), 'PRODUCTS')
-
